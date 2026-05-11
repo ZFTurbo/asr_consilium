@@ -2,21 +2,6 @@
 
 A repository for Automatic Speech Recognition (ASR) that ensembles multiple open-source models to achieve SOTA quality of recognition. Useful if you need to get the maximum quality of recognition despite the computational time.
 
-## Supported models
-
-| Model name                                                                                  | Params (B) | Languages | Average WER (English) |
-|---------------------------------------------------------------------------------------------|----------|-----------|-----------------------|
-| [Nvidia Parakeet v2](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2)                    | 0.6      | en        | 6.05                  |
-| [Nvidia Parakeet v3](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3)                    | 0.6      | 26        | 6.32                  |
-| [Nvidia Parakeet tdt1.1](https://huggingface.co/nvidia/parakeet-tdt-1.1b)                   | 1.1      | en        | 7.02                  |
-| [Qwen3-ASR-0.6B](https://huggingface.co/Qwen/Qwen3-ASR-0.6B)                                | 0.6      | 30        | 6.42                  |
-| [Qwen3-ASR-1.7B](https://huggingface.co/Qwen/Qwen3-ASR-1.7B)                                | 1.7      | 52        | 5.76                  |
-| [Canary Qwen](https://huggingface.co/nvidia/canary-qwen-2.5b)                               | 2.5      | en        | 5.63                  |
-| [IBM Granite Speech 4.0-1B](https://huggingface.co/ibm-granite/granite-4.0-1b-speech)       | 1.0      | 6         | 5.52                  |
-| [IBM Granite Speech 3.3-8B](https://huggingface.co/ibm-granite/granite-speech-3.3-8b)       | 8.0      | 5         | 5.74                  |
-| [Cohere Transcribe (03-2026)](https://huggingface.co/CohereLabs/cohere-transcribe-03-2026)* | 2.0      | 14        | 5.42                  |
-| [Granite-Speech-4.1-2B](https://huggingface.co/ibm-granite/granite-speech-4.1-2b)           | 2.0      | 6         | 5.33                  | 
-| [Microsoft-Phi-4](https://huggingface.co/microsoft/Phi-4-multimodal-instruct)               | 5.6      | 8         | 6.02                  | 
 
 ## Usage
 ```
@@ -49,6 +34,23 @@ Or with command line:
 python3 inference.py  
 
 ```
+
+## Supported models
+
+| Model name                                                                                  | Params (B) | Languages | Average WER (English) |
+|---------------------------------------------------------------------------------------------|----------|-----------|-----------------------|
+| [Nvidia Parakeet v2](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2)                    | 0.6      | en        | 6.05                  |
+| [Nvidia Parakeet v3](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3)                    | 0.6      | 26        | 6.32                  |
+| [Nvidia Parakeet tdt1.1](https://huggingface.co/nvidia/parakeet-tdt-1.1b)                   | 1.1      | en        | 7.02                  |
+| [Qwen3-ASR-0.6B](https://huggingface.co/Qwen/Qwen3-ASR-0.6B)                                | 0.6      | 30        | 6.42                  |
+| [Qwen3-ASR-1.7B](https://huggingface.co/Qwen/Qwen3-ASR-1.7B)                                | 1.7      | 52        | 5.76                  |
+| [Canary Qwen](https://huggingface.co/nvidia/canary-qwen-2.5b)                               | 2.5      | en        | 5.63                  |
+| [IBM Granite Speech 4.0-1B](https://huggingface.co/ibm-granite/granite-4.0-1b-speech)       | 1.0      | 6         | 5.52                  |
+| [IBM Granite Speech 3.3-8B](https://huggingface.co/ibm-granite/granite-speech-3.3-8b)       | 8.0      | 5         | 5.74                  |
+| [Cohere Transcribe (03-2026)](https://huggingface.co/CohereLabs/cohere-transcribe-03-2026)* | 2.0      | 14        | 5.42                  |
+| [Granite-Speech-4.1-2B](https://huggingface.co/ibm-granite/granite-speech-4.1-2b)           | 2.0      | 6         | 5.33                  | 
+| [Microsoft-Phi-4](https://huggingface.co/microsoft/Phi-4-multimodal-instruct)               | 5.6      | 8         | 6.02                  | 
+
 
 ## Format of markdown.jsonl
 
