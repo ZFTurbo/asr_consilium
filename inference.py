@@ -6,7 +6,7 @@ if __name__ == '__main__':
     os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
     os.environ["CUDA_VISIBLE_DEVICES"] = "{}".format(gpu_use)
     code_path = os.path.dirname(os.path.abspath(__file__)) + '/'
-    os.environ['HF_HOME'] = code_path + 'windows/'
+    os.environ['HF_HOME'] = code_path + 'local_models_cache/'
 
 
 from asr_consilium import inference, AVAILABLE_MODELS
