@@ -30,11 +30,11 @@ def proc_data_with_cohere(
 
     processor = AutoProcessor.from_pretrained(
         model_path,
-        token="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",
+        token="...",
     )
     model = CohereAsrForConditionalGeneration.from_pretrained(
         model_path,
-        token="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",
+        token="...",
         device_map="auto",
     )
 
