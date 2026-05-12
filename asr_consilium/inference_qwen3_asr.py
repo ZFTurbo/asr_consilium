@@ -3,7 +3,7 @@ import torch
 import time
 from tqdm import tqdm
 import json
-from qwen_asr import Qwen3ASRModel
+from asr_consilium.qwen_asr import Qwen3ASRModel
 from .utils import get_dynamic_batches, store_results
 
 

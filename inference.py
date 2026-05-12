@@ -10,7 +10,6 @@ if __name__ == '__main__':
 
 
 from asr_consilium import inference, AVAILABLE_MODELS
-from asr_consilium.utils import calc_metrics
 import argparse
 import sys
 import torch
