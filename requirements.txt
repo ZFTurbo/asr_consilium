@@ -1,3 +1,5 @@
+torch
+torchvision
 transformers==4.57.6
 huggingface_hub==0.36.2
 qwen_asr==0.0.6
@@ -15,3 +17,5 @@ editdistance
 numpy
 librosa
 soundfile
+torchaudio
+backoff==2.2.1
