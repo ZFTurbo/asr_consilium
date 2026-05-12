@@ -31,8 +31,7 @@ asr_inference(
 Or with command line:
 
 ```bash
-python3 inference.py  
-
+python3 inference.py --input_data "samples/markdown.jsonl" --output "result.jsonl" --batch_size 16
 ```
 
 ## Supported models
