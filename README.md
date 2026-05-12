@@ -91,7 +91,7 @@ weights = [4.5, 4.2, 8.4, 9.8, 8.7, 3.5, 8.9, 9.4]
 
 ## Results for different datasets
 
-Note: WER/CER metric calculation slightly different from Open ASR Leaderboard
+Note: WER/CER metric calculation slightly different from [Open ASR Leaderboard](https://huggingface.co/spaces/hf-audio/open_asr_leaderboard)
 
 ### WER table (English language)
 | Model name                                                                            | avg  | [AMI](https://huggingface.co/datasets/edinburghcstr/ami)   | [Earnings22](https://huggingface.co/datasets/distil-whisper/earnings22) | [GigaSpeech](https://huggingface.co/datasets/speechcolab/gigaspeech) | [LibriSpeech (clean)](https://huggingface.co/datasets/openslr/librispeech_asr) | [LibriSpeech (other)](https://huggingface.co/datasets/openslr/librispeech_asr) | [SPGISpeech](https://huggingface.co/datasets/kensho/spgispeech) | [TED-LIUM v3](https://arxiv.org/abs/1805.04699) | [VoxPopuli](https://huggingface.co/datasets/facebook/voxpopuli) |
