@@ -19,3 +19,4 @@ librosa
 soundfile
 torchaudio
 backoff==2.2.1
+mistral-common[audio]

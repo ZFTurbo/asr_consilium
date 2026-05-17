@@ -3,7 +3,7 @@ import time
 from tqdm import tqdm
 import numpy as np
 import json
-from .normalizer import EnglishTextNormalizer
+from .normalizer import EnglishTextNormalizer, BasicMultilingualTextNormalizer
 from .normalizer.english_abbreviations import english_spelling_normalizer
 import Levenshtein
 import editdistance
@@ -508,6 +508,7 @@ def ensebmle_on_files(
     char_level=True,
     weights=None,
     ensemble_type='median_extended',
+    language=None,
     max_workers=8,
     verbose=True,
 ):
@@ -516,7 +517,14 @@ def ensebmle_on_files(
     if verbose:
         print("Normalize: {}, Char level: {}".format(normalize, char_level))
         print("Weights: {}".format(weights))
-    normalizer = EnglishTextNormalizer(english_spelling_normalizer)
+    if language == 'en':
+        if verbose:
+            print("Use English language text normalizer")
+        normalizer = EnglishTextNormalizer(english_spelling_normalizer)
+    else:
+        if verbose:
+            print("Use Multi-lingual text normalizer")
+        normalizer = BasicMultilingualTextNormalizer()
     merged_data = load_jsonl_to_dict(input_files)
     uids = list(merged_data.keys())
 

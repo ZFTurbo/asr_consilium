@@ -3,7 +3,7 @@ from tqdm import tqdm
 import soundfile as sf
 import json
 import evaluate
-from .normalizer import EnglishTextNormalizer
+from .normalizer import EnglishTextNormalizer, BasicMultilingualTextNormalizer
 
 
 def get_dynamic_batches(
@@ -48,7 +48,7 @@ def store_results(results, output_file):
     out = open(output_file, "w", encoding='utf-8')
     for audio, text in results.items():
         r = {"audio": audio, "text": text}
-        out.write(json.dumps(r) + '\n')
+        out.write(json.dumps(r, ensure_ascii=False) + '\n')
     out.close()
 
 
@@ -91,9 +91,10 @@ def store_test_dataset_as_files_unique(dataset, out_dir, name='test'):
         else:
             part = dataset[name][i]["audio"]["path"][:-4]
             part = part.replace(":", "")
-            orig_name = part + '_{}.wav'.format(i)
+            orig_name = os.path.basename(part + '_{}.wav'.format(i))
         audio = dataset[name][i]["audio"]["array"]
         sr = dataset[name][i]["audio"]["sampling_rate"]
+        # print(out_dir, orig_name, os.path.join(os.path.abspath(out_dir), orig_name))
         sf.write(os.path.join(out_dir, orig_name), audio, sr, 'FLOAT')
         res = {
             'audio': orig_name,
@@ -105,10 +106,18 @@ def store_test_dataset_as_files_unique(dataset, out_dir, name='test'):
     return output_jsonl_file
 
 
-def calc_metrics(target_file, preds_file, verbose=True):
+def calc_metrics(
+        target_file,
+        preds_file,
+        lang='en',
+        verbose=True
+):
     wer_metric = evaluate.load("wer")
     cer_metric = evaluate.load("cer")
-    normalizer = EnglishTextNormalizer()
+    if lang == 'en':
+        normalizer = EnglishTextNormalizer()
+    else:
+        normalizer = BasicMultilingualTextNormalizer()
 
     lines = open(target_file, 'r', encoding="utf-8").readlines()
     target = [json.loads(line) for line in lines]
@@ -134,6 +143,7 @@ def calc_metrics(target_file, preds_file, verbose=True):
     if len(check) != 0:
         print("Some problem here. Some ids wasn't predicted! {}".format(len(check)))
         print(list(check)[:5])
+        print(target_file, preds_file)
 
     references1 = []
     hypotheses1 = []

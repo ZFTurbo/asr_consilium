@@ -34,7 +34,7 @@ if __name__ == "__main__":
     parser.add_argument('--weights', nargs='+', type=float, help='Weights for models (must match the number of models)')
 
     # Metadata and processing settings
-    parser.add_argument('--language', default='English', help='Language for models (default: English)')
+    parser.add_argument('--language', default='en', help='Language for models (default: en). Supported: en, fr, de, it, es, pt, ru, xx (other)')
 
     # Normalization flags (Defaults to True)
     # Using --no-normalize will set normalize to False

@@ -4,16 +4,49 @@ import time
 from tqdm import tqdm
 import json
 from asr_consilium.qwen_asr import Qwen3ASRModel
+from asr_consilium.qwen_asr.inference.utils import SUPPORTED_LANGUAGES
 from .utils import get_dynamic_batches, store_results
 
 
 TOKENS_PER_SECOND = 20
 
+ISO_TO_LANGUAGE_MAP = {
+    "zh": "Chinese",
+    "en": "English",
+    "ar": "Arabic",
+    "de": "German",
+    "fr": "French",
+    "es": "Spanish",
+    "pt": "Portuguese",
+    "id": "Indonesian",
+    "it": "Italian",
+    "ko": "Korean",
+    "ru": "Russian",
+    "th": "Thai",
+    "vi": "Vietnamese",
+    "ja": "Japanese",
+    "tr": "Turkish",
+    "hi": "Hindi",
+    "ms": "Malay",
+    "nl": "Dutch",
+    "sv": "Swedish",
+    "da": "Danish",
+    "fi": "Finnish",
+    "pl": "Polish",
+    "cs": "Czech",
+    "tl": "Filipino",
+    "fa": "Persian",
+    "el": "Greek",
+    "ro": "Romanian",
+    "hu": "Hungarian",
+    "mk": "Macedonian"
+}
+
 
 def proc_data_with_qwen(
         jsonl_file,
         out_file,
-        language="English",
+        language="en",
         batch_size=16,
         model_path="Qwen/Qwen3-ASR-1.7B",
 ):
@@ -25,6 +58,12 @@ def proc_data_with_qwen(
         Qwen/Qwen3-ASR-0.6B
     :return:
     """
+
+    # Convert language to Qwen3-ASR format
+    if language in ISO_TO_LANGUAGE_MAP:
+        language = ISO_TO_LANGUAGE_MAP[language]
+    else:
+        language = None
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print("Loading model: {}".format(model_path))
